@@ -1,16 +1,45 @@
 #include <stdio.h>
-#include <math.h>
+
+long long fatorial(int n) {
+    if (n == 0 || n == 1)
+        return 1;
+    else
+        return n * fatorial(n - 1);
+}
+
+long long combinacao(int n, int k) {
+    return fatorial(n) / (fatorial(k) * fatorial(n - k));
+}
+
+double calcularProbabilidade(int numerosEscolhidos, int numerosPossiveis) {
+    long long totalCombinacoes = combinacao(numerosPossiveis, numerosEscolhidos);
+    return 1.0 / totalCombinacoes;
+}
 
 int main() {
-    int numeros_totais = 60;
-    int numeros_escolhidos = 6;
-    long double probabilidade;
+    int numerosPossiveis = 60; // Número total de possibilidades na Mega-Sena
 
-    // Cálculo da probabilidade
-    probabilidade = 1.0 / (pow(numeros_totais, numeros_escolhidos));
+    printf("Probabilidade de ganhar na Mega-Sena:\n");
 
-    // Imprime o resultado
-    printf("A probabilidade de acertar os 6 números na Mega Sena é de aproximadamente %.16Lf\n", probabilidade);
+    // Jogos de 5 números
+    int numerosEscolhidos = 5;
+    double probabilidade = calcularProbabilidade(numerosEscolhidos, numerosPossiveis);
+    printf("Jogo de %d números: 1 em %.0lf\n", numerosEscolhidos, 1.0 / probabilidade);
+
+    // Jogos de 6 números
+    numerosEscolhidos = 6;
+    probabilidade = calcularProbabilidade(numerosEscolhidos, numerosPossiveis);
+    printf("Jogo de %d números: 1 em %.0lf\n", numerosEscolhidos, 1.0 / probabilidade);
+
+    // Jogos de 7 números
+    numerosEscolhidos = 7;
+    probabilidade = calcularProbabilidade(numerosEscolhidos, numerosPossiveis);
+    printf("Jogo de %d números: 1 em %.0lf\n", numerosEscolhidos, 1.0 / probabilidade);
+
+    // Jogos de 8 números
+    numerosEscolhidos = 8;
+    probabilidade = calcularProbabilidade(numerosEscolhidos, numerosPossiveis);
+    printf("Jogo de %d números: 1 em %.0lf\n", numerosEscolhidos, 1.0 / probabilidade);
 
     return 0;
 }
