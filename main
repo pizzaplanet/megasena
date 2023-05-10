@@ -1,0 +1,16 @@
+#include <stdio.h>
+#include <math.h>
+
+int main() {
+    int numeros_totais = 60;
+    int numeros_escolhidos = 6;
+    long double probabilidade;
+
+    // Cálculo da probabilidade
+    probabilidade = 1.0 / (pow(numeros_totais, numeros_escolhidos));
+
+    // Imprime o resultado
+    printf("A probabilidade de acertar os 6 números na Mega Sena é de aproximadamente %.16Lf\n", probabilidade);
+
+    return 0;
+}
